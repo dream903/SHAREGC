@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>prestation Details</title>
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+      <style>
+.row{
+margin-left:50px
+}
+
+  </style>
+</head>
+<body>
+<div layout:fragment ="content">
+
+
+<div class="row">
+        <div class="col-md-12">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">prestation Detail</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form th:action="@{/prestation/save}" th:object="${prestation}" method="post" class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">prestation Id</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  readonly="readonly" th:field="*{codePrest}" placeholder="prestation ID">
+                            </div>
+                        </div>
+<!--                         <div class="form-group"> -->
+<!--                             <label class="col-sm-2 control-label">Product Type:<span>*</span></label> -->
+<!--                             <div class="col-sm-10"> -->
+<!--                                 <select class="form-control" th:field="*{idprestation}"> -->
+<!--                                     <option value="">Select...</option> -->
+<!--                                     <option th:each="productType : ${productTypes}" th:value="${productType.id}" th:utext="${productType.name}"/> -->
+<!--                                 </select> -->
+<!--                                 <p class="text-red" th:if="${#fields.hasErrors('productTypeId')}" th:errors="*{productTypeId}"></p> -->
+<!--                             </div> -->
+<!--                         </div> -->
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">lib</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  th:field="*{lib}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('lib')}" th:errors="*{lib}"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">tarif</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="*{tarif}" />
+                            </div>
+                        </div>
+
+                      
+<!--                         <div class="form-group"> -->
+<!--                             <label class="col-sm-2 control-label">Price</label> -->
+<!--                             <div class="col-sm-10"> -->
+<!--                                 <input type="text" class="form-control" th:field="*{price}" /> -->
+<!--                                 <p class="text-red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p> -->
+<!--                             </div> -->
+<!--                         </div> -->
+
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer center">
+                        <a th:href="@{/prestation/index}">
+                            <button type="button" class="btn btn-default"><i class="fa fa-right"></i> Cancel</button>
+                        </a>
+                        <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+
+
+
+</div>
+    
+</body>
+
+</html>

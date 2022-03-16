@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+
+   
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="#"   th:action="@{/saverdv}" th:object ="${rdvfixe}"method="post">
+
+<table>
+<tr>
+
+
+<td><label> code client</label></td>
+<td><input type="text" name="idClient" th:field="*{idClient}"></input>
+</td>
+
+
+<tr>
+<td>
+
+<label> code prest</label><input type="text" name="codePrest" th:field="*{codePrest}"></input>
+
+</td>
+<td>
+<label> date</label><input type="text" name="dateRdv" th:field="*{dateRdv}"></input>
+</td>
+
+</tr>
+<tr>
+
+<td></td>
+<td>
+<input type="submit" value="submit"></input>
+</td>
+</tr>
+
+</table>
+</form>
+
+</body>
+</html>

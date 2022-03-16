@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymleaf.org">
+<head>
+
+<title>Insert title here</title>
+<script th:src="@{/js/jquery-1.6.2.min.js}" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function()
+		
+		
+{
+	
+	$('#fullnamn').change(function() {
+
+	  
+	  	var fullnam=$('#fullnamn').val();
+				alert('/api/ajax/demo4/'+fullnam);
+
+			$.ajax(
+			
+			{
+				type:'GET',
+				url:'/api/ajax/findClientByname/'+fullnam,
+				dataType:'json',
+				contentType:'application/json',
+				
+				success:function(result){
+					$("#div2").append('id Client <p id=idClient'+' ' +' value ='+result.idClient+'>'+result.idClient+ '</p>');
+					$("#div2").append('Nom Client <p id=name'+' ' +'value ='+result.name+'>'+result.name +'</p>');
+					$("#div2").append('Email Client <p id=email'+' ' +'value ='+result.email+'>'+result.email +'</p>');
+					$("#div2").append('Num tel  Client <p id=numTel'+' ' +'value ='+result.numTel+'>'+result.numTel +'</p>');
+					
+					
+					$("#div2").append('<form    th:action="@{/registerRdv}" th:object="${rdvfixe}" method="post">code Client <p id=idClient'+' ' +'value ='+result.idClient+' th:field="*{client.idClient}">'+result.idClient +'</p>Code Prest:<input type=text id=codep th:field="*{prestation.codePrest}">	Date RDV<input type=text id=datefixe th:field="*{dateRdv}"/><input type="submit" value ="submit" id="submit"/></form>');
+					
+					
+				},
+				error:function(){
+					alert('error loading detail client');
+				}
+			});
+	});
+	
+	
+	
+	
+	
+// 	----------------------------
+	
+	
+	
+	
+	
+	$('#buttondemo4').click(
+			function(){
+				var fullnam=$('#fullnam').val();
+// 				alert('/api/ajax/demo4/'+fullnam);
+
+			$.ajax(
+			
+			{
+				type:'GET',
+				url:'/api/ajax/demo4/'+fullnam,
+				dataType:'json',
+				contentType:'application/json',
+				
+				success:function(result){
+					
+
+// 					$("#div1").append('<form>');
+					
+// 					$("#div1").append('<form>Code Client <p id=codeclt' +' ' +'value ='+result.idRDV+'>'+result.idRDV+ '</p>');
+// 					$("#div1").append('Date RDV Client <p id=dateRdv'+' ' +' value ='+result.dateRdv+'>'+result.dateRdv+ '</p>');
+					$("#div1").append('Nom Client <p id=name'+' ' +'value ='+result.client.name+'>'+result.client.name +'</p>');
+// 					$("#div1").append('code Client <p id=idClient'+' ' +'value ='+result.client.idClient+'>'+result.client.idClient +'</p></form>');
+// 					$("#div1").append('</form>');
+					$("#div1").append('<form>code Client <p id=idClient'+' ' +'value ='+result.client.idClient+'>'+result.client.idClient +'</p>Code Prest:<input type=text id=codep>	Date RDV<input type=text id=datefixe/><input type="button" value ="add" id="add"/></form>');
+					
+				
+				},
+				error:function(){
+					alert('error');
+				}
+			
+				});
+
+		
+		});
+	
+	
+	
+	
+	
+
+// 	$('#add').click(function()
+// 			{
+//  		var rdv={
+// 	        idClient:'',
+// 			codep:'',
+ 		
+// 			};
+
+// 				$.ajax(	{
+					
+// 							type:'POST',
+// 							url:'/rdv/save/',
+// 							data:{
+// 								idRDV:null,
+// 								dateRdv:"2021-11-9",
+// 								fait:false,
+// 								idClient:$('#idclient'),
+// 								codep:$('#codep'),
+// 								}
+// 							,
+// 							contentType:'application/json',
+							
+// 							success:function(){
+								
+								
+// 						},
+// 						error:function(){
+// 							alert('error');
+// 						}
+						
+// 					});			
+// 				});		
+			
+	
+	
+	$('#buttoncons').click(
+			function(){
+				var fullname=$('#fullname').val();
+				alert('/api/ajax/demo3/'+fullname);
+				
+			
+			$.ajax(
+			
+			{
+				type:'GET',
+				url:'/api/ajax/demo3/'+fullname,
+				dataType:'json',
+				contentType:'application/json',
+				
+				success:function(result){
+					var s='';
+// 					alert(result.length);
+				     /*<![CDATA[*/
+					for(var i=0;i<result.length;i++)
+					{
+// 						$res4.append('<p id='+i+'/>');
+					
+				
+					
+					s+='<br/> date rdv: '+result[i].dateRdv;
+					
+
+					s+='<br/> nom clt rdv: '+result[i].client.name;
+					
+					s+='<br/>--------------------------------';
+					}
+					 /*]]>*/
+// 					 alert(s);
+					
+					$('#result4').html(s);	
+				
+
+					}
+			
+				});
+
+		
+		});
+	
+	
+	
+	$('#buttondemo2').click(
+			function(){
+				var fullname=$('#fullnam2').val()
+				alert('/api/ajax/demo2/'+fullname);
+
+			$.ajax(
+			
+			{
+				type:'GET',
+				url:'/api/ajax/demo2/'+fullname,
+			
+				
+				success:function(result){
+					$('#result2').text(result);
+				}
+	
+	
+			});
+			});
+
+		
+	});
+
+
+//	var s='';
+//	var s1='';
+//// 					s1+='<p id ='+i+' value='+ result[i].idRDV+'/>';
+//	s+='<br> Id : '+ result.idRDV;
+
+//	s+='<br> date rdv: '+ result.dateRdv;
+//	s+='<br> nom: '+ result.client.name;
+//	$('#result4').html(s);	
+
+
+</script>
+
+</head>
+<body>
+<fieldset>
+<legend> cdemo2</legend>
+full Name<input type="text" id="fullnam2"/>
+<br/>
+<input type="button" value ="demo2" id="buttondemo2"/>
+<br/>
+<span id="result2"></span>
+
+</fieldset>
+
+
+
+<fieldset>
+<legend> consulter client</legend>
+full Name<input type="text" id="fullname"/>
+<br/>
+<input type="button" value ="cons" id="buttoncons"/>
+<br/>
+<span id="cons"></span>
+
+</fieldset>
+
+
+
+
+
+<fieldset>
+<legend> consulter rdv</legend>
+full Name<input type="text" id="fullnam"/>
+<br/>
+<input type="button" value ="demo4" id="buttondemo4"/>
+<br/>
+<span id="result4"></span>
+<div id="div1"><h2>Fiche Client</h2></div>
+
+
+</fieldset>
+
+<fieldset>
+<legend> Detail Client</legend>
+full Name<input type="text" id="fullnamn"/>
+<br/>
+
+<div id="div2"><h2>Fiche2 Client</h2></div>
+
+
+</fieldset>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+   
+<meta charset="ISO-8859-1">
+<title> RDV FIXE</title>
+<style type="text/css">
+		span{
+		display:inline-block;
+		width:200px;
+		text-align:left;
+		}
+
+</style>
+
+</head>
+<body>
+<div align="center">
+
+<h1>RDV FIXE</h1>
+<span>code Client name</span><span th:text=${rdvfixe.client.idClient}></span><br/>
+<span>Code Prestation </span><span th:text=${rdvfixe.prestation.codePrest}></span><br/>
+<span>Date RDV  </span><span th:text=${rdvfixe.dateRdv}></span><br/>
+<span>Fait  </span><span th:text=${rdvfixe.fait}></span><br/>
+
+</div>
+
+</body>
+</html>

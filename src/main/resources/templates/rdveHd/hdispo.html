@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Liste des heures dispo</title>
+
+<script th:src="@{/js/jquery-1.6.2.js}"
+type="text/javascript"></script>
+
+
+
+
+
+
+
+
+</head>
+<body>
+<div>
+
+<form >
+<!-- ction="#" th:action="@{/seedstartermng}" th:object="${seedStarter}" method="post"> -->
+<table>
+<tr>
+<td>code client</td>
+
+<td><input type="text"  />
+</td>
+<td><p>nom client</p></td></tr>
+<tr>
+<td>code prest</td>
+<td><input type="text"  />
+</td>
+<td><p>lib prestationx</p></td>
+</tr>
+</br></br>
+
+<tr>
+<td>date debut</td>
+<td><input type="text"  />
+</td>
+<td>date fin</td>
+<td><input type="text"  />
+</td>
+<td>
+      <button name="chercher heure disponible" type="submit" value="1">Chercher dispo</button>
+    </td></tr>
+</table>
+
+
+</form>
+
+<Table>
+<thead>
+<th>date disponible</th><th>heure disponible</th><th>disp</th>
+
+
+</thead>
+
+<tbody>
+
+<tr th:each="e:${hdispo}">
+
+<td th:text="${e.date}"></td>
+<td th:text="${e.heure}"></td>
+<td th:text="${e.dispo}"></td>
+</tr>
+
+</tbody>
+</Table>
+
+
+
+</body>
+</html>
